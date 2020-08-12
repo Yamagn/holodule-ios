@@ -36,7 +36,6 @@ targets:
       - carthage: KRActivityIndicatorView
       - carthage: APIKit
       - carthage: RxSwift
-      - carthage: Action
       - carthage: Kingfisher
       - carthage: RxCocoa
       - carthage: RxRelay

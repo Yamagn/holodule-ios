@@ -1,5 +1,4 @@
 github "Krimpedance/KRProgressHUD"
 github "ishkawa/APIKit"
 github "ReactiveX/RxSwift"
-github "RxSwiftCommunity/Action"
 github "onevcat/Kingfisher"
