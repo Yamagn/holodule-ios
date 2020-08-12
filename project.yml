@@ -1,0 +1,66 @@
+name: holodule-ios
+configs:
+  Debug: debug
+  Release: release
+options:
+  groupSortPosition: top
+attributes:
+  ORGANIZATIONNAME: ymgn
+fileGroups:
+  - holodule-ios
+settingGroups:
+  app:
+    DEVELOPMENT_TEAM: 7F6B255837
+targets:
+  holodule-ios:
+    type: application
+    platform: iOS
+    sources:
+      - path: holodule-ios
+    attributes:
+      SystemCapabilities:
+        com.apple.BackgroundModes:
+          enabled: 1
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: ymgn.holodule-ios
+        ASSETCATALOG_COMPIER_APPICON_NAME: AppIcon
+        INFOPLIST_FILE: holodule-ios/Info.plist
+      configs:
+        Debug:
+          GCC_OPTIMIZATION_LEVEL: O
+        Release:
+          GCC_OPTIMIZATION_LEVEL: s
+    dependencies:
+      - carthage: KRProgressHUD
+      - carthage: KRActivityIndicatorView
+      - carthage: APIKit
+      - carthage: RxSwift
+      - carthage: Action
+      - carthage: Kingfisher
+      - carthage: RxCocoa
+      - carthage: RxRelay
+  holodule-iosTests:
+    type: bundle.unit-test
+    platform: iOS
+    dependencies:
+      - target: holodule-ios
+    settings:
+      TEST_HOSTS: $(BUILT_PRODUCTS_DIR)/holodule-ios.app/holodule-ios
+      INFORPLSIT_FILE: holodule-iosTests/Info.plist
+    sources:
+      - holodule-iosTests
+
+schemes:
+  holodule-ios:
+    build:
+      targets:
+        holodule-ios: all
+    run:
+      config: Debug
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    archive:
+      config: Release

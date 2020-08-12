@@ -3,112 +3,262 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		075D032324E2915900CAAB8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075D032224E2915900CAAB8E /* AppDelegate.swift */; };
-		075D032524E2915900CAAB8E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075D032424E2915900CAAB8E /* SceneDelegate.swift */; };
-		075D032724E2915900CAAB8E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075D032624E2915900CAAB8E /* ViewController.swift */; };
-		075D032A24E2915900CAAB8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 075D032824E2915900CAAB8E /* Main.storyboard */; };
-		075D032C24E2915A00CAAB8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 075D032B24E2915A00CAAB8E /* Assets.xcassets */; };
-		075D032F24E2915A00CAAB8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 075D032D24E2915A00CAAB8E /* LaunchScreen.storyboard */; };
-		075D033A24E2915A00CAAB8E /* holodule_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075D033924E2915A00CAAB8E /* holodule_iosTests.swift */; };
+		0082D2EB5DC6C3BCE36DF193 /* APIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1AEDFA5CEC4CE4E38436B9D3 /* APIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		075D034D24E4338D00CAAB8E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075D034C24E4338D00CAAB8E /* API.swift */; };
+		075D034F24E4339C00CAAB8E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075D034E24E4339C00CAAB8E /* HomeViewController.swift */; };
+		075D035124E433C700CAAB8E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075D035024E433C700CAAB8E /* HomeViewModel.swift */; };
+		0E4DB22BF7995E298A911511 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58710D03491FB6A23800296B /* Kingfisher.framework */; };
+		24B04941EA3B7868097D4A5E /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AEDFA5CEC4CE4E38436B9D3 /* APIKit.framework */; };
+		362E369B4E0602257108DCFB /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CDAE2BC4DFC4BFDFC6F4348 /* Home.storyboard */; };
+		55C126D1FBF12F7B1C877098 /* KRActivityIndicatorView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 962961A084F7FE67A52936EE /* KRActivityIndicatorView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5CB925EF9C94D611AC5FB4DB /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0ABB6989ED6AA0FD8BE3C3E /* RxRelay.framework */; };
+		7E9E712597D1D5DB24959FDA /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 19B6487488A56AB3C3DC4246 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7EB135ADAFA8E4AC8CEAD293 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19B6487488A56AB3C3DC4246 /* RxSwift.framework */; };
+		7F5FEB535F37277E5117F124 /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 15B47E4A9219DCEB56DCDB39 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8323C9A9EA82ED0954F48567 /* holodule_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48329598835E4A94B3826DD /* holodule_iosTests.swift */; };
+		8A8BB3969A454E36881897C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38B0FDE510D86A697FBD71 /* SceneDelegate.swift */; };
+		91BDC323C042C9730E824E1F /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 58710D03491FB6A23800296B /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9BC73DBA408F9B548AE6CFEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5783BE2B0F8DCC2208A24593 /* LaunchScreen.storyboard */; };
+		9D7E340C67AC4B709956890A /* KRProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4A343A9C2D8B3187B1B4DC1 /* KRProgressHUD.framework */; };
+		9E8190B1F8A81A1C25952F2C /* KRProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A4A343A9C2D8B3187B1B4DC1 /* KRProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AE670DAFB23422266E108733 /* KRActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 962961A084F7FE67A52936EE /* KRActivityIndicatorView.framework */; };
+		BA181A06215D4FA7C95F0C22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50A4DCF35E950CF8131393FF /* Assets.xcassets */; };
+		BD96EEB8B9D5AC0F94ED5B9E /* Action.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 742D53B532F83430A0F06DF4 /* Action.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C7EB595D095EAEEAC3414876 /* RxRelay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C0ABB6989ED6AA0FD8BE3C3E /* RxRelay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E3869D1265A600807257C106 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15B47E4A9219DCEB56DCDB39 /* RxCocoa.framework */; };
+		E7AA6629F386C6BBE28BA96A /* Action.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 742D53B532F83430A0F06DF4 /* Action.framework */; };
+		F7C101CB921E4DE583642FFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA474BB291C49B11B91DA268 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		075D033624E2915A00CAAB8E /* PBXContainerItemProxy */ = {
+		FC6DF5B842F699FE3572B3DA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 075D031724E2915900CAAB8E /* Project object */;
+			containerPortal = 7B0DAA1F36AD6E438502233B /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 075D031E24E2915900CAAB8E;
+			remoteGlobalIDString = A7433C45DFD7F75327F0B32F;
 			remoteInfo = "holodule-ios";
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		5F9AFF4D30207881EDFC5DB8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0082D2EB5DC6C3BCE36DF193 /* APIKit.framework in Embed Frameworks */,
+				BD96EEB8B9D5AC0F94ED5B9E /* Action.framework in Embed Frameworks */,
+				55C126D1FBF12F7B1C877098 /* KRActivityIndicatorView.framework in Embed Frameworks */,
+				9E8190B1F8A81A1C25952F2C /* KRProgressHUD.framework in Embed Frameworks */,
+				91BDC323C042C9730E824E1F /* Kingfisher.framework in Embed Frameworks */,
+				7F5FEB535F37277E5117F124 /* RxCocoa.framework in Embed Frameworks */,
+				C7EB595D095EAEEAC3414876 /* RxRelay.framework in Embed Frameworks */,
+				7E9E712597D1D5DB24959FDA /* RxSwift.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		075D031F24E2915900CAAB8E /* holodule-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "holodule-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		075D032224E2915900CAAB8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		075D032424E2915900CAAB8E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		075D032624E2915900CAAB8E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		075D032924E2915900CAAB8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		075D032B24E2915A00CAAB8E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		075D032E24E2915A00CAAB8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		075D033024E2915A00CAAB8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		075D033524E2915A00CAAB8E /* holodule-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "holodule-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		075D033924E2915A00CAAB8E /* holodule_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = holodule_iosTests.swift; sourceTree = "<group>"; };
-		075D033B24E2915A00CAAB8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		075D034C24E4338D00CAAB8E /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		075D034E24E4339C00CAAB8E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		075D035024E433C700CAAB8E /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		15B47E4A9219DCEB56DCDB39 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxCocoa.framework; sourceTree = "<group>"; };
+		19B6487488A56AB3C3DC4246 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxSwift.framework; sourceTree = "<group>"; };
+		1A4571D8E26D2D3FCCB7905B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1AEDFA5CEC4CE4E38436B9D3 /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = APIKit.framework; sourceTree = "<group>"; };
+		459AC57F8FCDE9369CBB70A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4C967B45BAAF41196434D0D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		50A4DCF35E950CF8131393FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		58710D03491FB6A23800296B /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Kingfisher.framework; sourceTree = "<group>"; };
+		742D53B532F83430A0F06DF4 /* Action.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Action.framework; sourceTree = "<group>"; };
+		962961A084F7FE67A52936EE /* KRActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KRActivityIndicatorView.framework; sourceTree = "<group>"; };
+		A4A343A9C2D8B3187B1B4DC1 /* KRProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KRProgressHUD.framework; sourceTree = "<group>"; };
+		BB38B0FDE510D86A697FBD71 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		C0ABB6989ED6AA0FD8BE3C3E /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxRelay.framework; sourceTree = "<group>"; };
+		D48329598835E4A94B3826DD /* holodule_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = holodule_iosTests.swift; sourceTree = "<group>"; };
+		E8EC3BC6AF96A979D2E8C21F /* holodule-iosTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = "holodule-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA474BB291C49B11B91DA268 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F40206C60C28CF630A21ABF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
+		F8CD50C2FC56AF6F520A691C /* holodule-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "holodule-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		075D031C24E2915900CAAB8E /* Frameworks */ = {
+		17DD71264D7027C7869A1583 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		075D033224E2915A00CAAB8E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				9D7E340C67AC4B709956890A /* KRProgressHUD.framework in Frameworks */,
+				AE670DAFB23422266E108733 /* KRActivityIndicatorView.framework in Frameworks */,
+				24B04941EA3B7868097D4A5E /* APIKit.framework in Frameworks */,
+				7EB135ADAFA8E4AC8CEAD293 /* RxSwift.framework in Frameworks */,
+				E7AA6629F386C6BBE28BA96A /* Action.framework in Frameworks */,
+				0E4DB22BF7995E298A911511 /* Kingfisher.framework in Frameworks */,
+				E3869D1265A600807257C106 /* RxCocoa.framework in Frameworks */,
+				5CB925EF9C94D611AC5FB4DB /* RxRelay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		075D031624E2915900CAAB8E = {
+		075D034424E431A600CAAB8E /* App */ = {
 			isa = PBXGroup;
 			children = (
-				075D032124E2915900CAAB8E /* holodule-ios */,
-				075D033824E2915A00CAAB8E /* holodule-iosTests */,
-				075D032024E2915900CAAB8E /* Products */,
+				EA474BB291C49B11B91DA268 /* AppDelegate.swift */,
 			);
+			path = App;
 			sourceTree = "<group>";
 		};
-		075D032024E2915900CAAB8E /* Products */ = {
+		075D034524E431AD00CAAB8E /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				075D031F24E2915900CAAB8E /* holodule-ios.app */,
-				075D033524E2915A00CAAB8E /* holodule-iosTests.xctest */,
+				075D034B24E4320900CAAB8E /* Home */,
+				075D034A24E4320100CAAB8E /* Launch */,
 			);
-			name = Products;
+			path = Scenes;
 			sourceTree = "<group>";
 		};
-		075D032124E2915900CAAB8E /* holodule-ios */ = {
+		075D034624E431B300CAAB8E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				075D032224E2915900CAAB8E /* AppDelegate.swift */,
-				075D032424E2915900CAAB8E /* SceneDelegate.swift */,
-				075D032624E2915900CAAB8E /* ViewController.swift */,
-				075D032824E2915900CAAB8E /* Main.storyboard */,
-				075D032B24E2915A00CAAB8E /* Assets.xcassets */,
-				075D032D24E2915A00CAAB8E /* LaunchScreen.storyboard */,
-				075D033024E2915A00CAAB8E /* Info.plist */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		075D034724E431B900CAAB8E /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				075D034C24E4338D00CAAB8E /* API.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		075D034824E431C000CAAB8E /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
+		075D034924E431F500CAAB8E /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		075D034A24E4320100CAAB8E /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				5783BE2B0F8DCC2208A24593 /* LaunchScreen.storyboard */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
+		075D034B24E4320900CAAB8E /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				4CDAE2BC4DFC4BFDFC6F4348 /* Home.storyboard */,
+				075D034E24E4339C00CAAB8E /* HomeViewController.swift */,
+				075D035024E433C700CAAB8E /* HomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		444BDA8B213320E5F5FC02C8 /* holodule-ios */ = {
+			isa = PBXGroup;
+			children = (
+				075D034924E431F500CAAB8E /* Assets */,
+				075D034824E431C000CAAB8E /* Extentions */,
+				075D034724E431B900CAAB8E /* Network */,
+				075D034624E431B300CAAB8E /* Models */,
+				075D034524E431AD00CAAB8E /* Scenes */,
+				075D034424E431A600CAAB8E /* App */,
+				50A4DCF35E950CF8131393FF /* Assets.xcassets */,
+				BB38B0FDE510D86A697FBD71 /* SceneDelegate.swift */,
+				459AC57F8FCDE9369CBB70A0 /* Info.plist */,
 			);
 			path = "holodule-ios";
 			sourceTree = "<group>";
 		};
-		075D033824E2915A00CAAB8E /* holodule-iosTests */ = {
+		58FC4CB80ACEDAEE9D8832A0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				075D033924E2915A00CAAB8E /* holodule_iosTests.swift */,
-				075D033B24E2915A00CAAB8E /* Info.plist */,
+				F8CD50C2FC56AF6F520A691C /* holodule-ios.app */,
+				E8EC3BC6AF96A979D2E8C21F /* holodule-iosTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6569364283ADDB56CB1AE256 /* holodule-iosTests */ = {
+			isa = PBXGroup;
+			children = (
+				D48329598835E4A94B3826DD /* holodule_iosTests.swift */,
+				1A4571D8E26D2D3FCCB7905B /* Info.plist */,
 			);
 			path = "holodule-iosTests";
+			sourceTree = "<group>";
+		};
+		7C368EA12A78B50C3E47C908 = {
+			isa = PBXGroup;
+			children = (
+				444BDA8B213320E5F5FC02C8 /* holodule-ios */,
+				6569364283ADDB56CB1AE256 /* holodule-iosTests */,
+				F4311371F7FA1263DD332B74 /* Frameworks */,
+				58FC4CB80ACEDAEE9D8832A0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		86B08E8B86727F6E07192BBB /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				742D53B532F83430A0F06DF4 /* Action.framework */,
+				1AEDFA5CEC4CE4E38436B9D3 /* APIKit.framework */,
+				58710D03491FB6A23800296B /* Kingfisher.framework */,
+				962961A084F7FE67A52936EE /* KRActivityIndicatorView.framework */,
+				A4A343A9C2D8B3187B1B4DC1 /* KRProgressHUD.framework */,
+				15B47E4A9219DCEB56DCDB39 /* RxCocoa.framework */,
+				C0ABB6989ED6AA0FD8BE3C3E /* RxRelay.framework */,
+				19B6487488A56AB3C3DC4246 /* RxSwift.framework */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		89D0FBD375CAE95BAD2ECF8F /* Carthage */ = {
+			isa = PBXGroup;
+			children = (
+				86B08E8B86727F6E07192BBB /* iOS */,
+			);
+			name = Carthage;
+			path = Carthage/Build;
+			sourceTree = "<group>";
+		};
+		F4311371F7FA1263DD332B74 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				89D0FBD375CAE95BAD2ECF8F /* Carthage */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		075D031E24E2915900CAAB8E /* holodule-ios */ = {
+		A7433C45DFD7F75327F0B32F /* holodule-ios */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 075D033E24E2915A00CAAB8E /* Build configuration list for PBXNativeTarget "holodule-ios" */;
+			buildConfigurationList = 9C62B1EF13C550BF57D98A07 /* Build configuration list for PBXNativeTarget "holodule-ios" */;
 			buildPhases = (
-				075D031B24E2915900CAAB8E /* Sources */,
-				075D031C24E2915900CAAB8E /* Frameworks */,
-				075D031D24E2915900CAAB8E /* Resources */,
+				E2C902396883A69361A5E684 /* Sources */,
+				5774EE91DA1B9A78DC759E53 /* Resources */,
+				4644CAEA76DC25EC6A70D6AD /* Carthage */,
+				17DD71264D7027C7869A1583 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -116,127 +266,152 @@
 			);
 			name = "holodule-ios";
 			productName = "holodule-ios";
-			productReference = 075D031F24E2915900CAAB8E /* holodule-ios.app */;
+			productReference = F8CD50C2FC56AF6F520A691C /* holodule-ios.app */;
 			productType = "com.apple.product-type.application";
 		};
-		075D033424E2915A00CAAB8E /* holodule-iosTests */ = {
+		FB836B007358D0A6E0D2E166 /* holodule-iosTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 075D034124E2915A00CAAB8E /* Build configuration list for PBXNativeTarget "holodule-iosTests" */;
+			buildConfigurationList = 6615E1AC74CFF4E661F39F60 /* Build configuration list for PBXNativeTarget "holodule-iosTests" */;
 			buildPhases = (
-				075D033124E2915A00CAAB8E /* Sources */,
-				075D033224E2915A00CAAB8E /* Frameworks */,
-				075D033324E2915A00CAAB8E /* Resources */,
+				1B29BE48575781831C739740 /* Sources */,
+				5F9AFF4D30207881EDFC5DB8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				075D033724E2915A00CAAB8E /* PBXTargetDependency */,
+				0B9FAA01721D211837480D2B /* PBXTargetDependency */,
 			);
 			name = "holodule-iosTests";
 			productName = "holodule-iosTests";
-			productReference = 075D033524E2915A00CAAB8E /* holodule-iosTests.xctest */;
+			productReference = E8EC3BC6AF96A979D2E8C21F /* holodule-iosTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		075D031724E2915900CAAB8E /* Project object */ = {
+		7B0DAA1F36AD6E438502233B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = ymgn;
 				TargetAttributes = {
-					075D031E24E2915900CAAB8E = {
-						CreatedOnToolsVersion = 11.4.1;
-					};
-					075D033424E2915A00CAAB8E = {
-						CreatedOnToolsVersion = 11.4.1;
-						TestTargetID = 075D031E24E2915900CAAB8E;
+					A7433C45DFD7F75327F0B32F = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
-			buildConfigurationList = 075D031A24E2915900CAAB8E /* Build configuration list for PBXProject "holodule-ios" */;
-			compatibilityVersion = "Xcode 9.3";
+			buildConfigurationList = 1D49FFEE92ED8ECDBD711C39 /* Build configuration list for PBXProject "holodule-ios" */;
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 075D031624E2915900CAAB8E;
-			productRefGroup = 075D032024E2915900CAAB8E /* Products */;
+			mainGroup = 7C368EA12A78B50C3E47C908;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				075D031E24E2915900CAAB8E /* holodule-ios */,
-				075D033424E2915A00CAAB8E /* holodule-iosTests */,
+				A7433C45DFD7F75327F0B32F /* holodule-ios */,
+				FB836B007358D0A6E0D2E166 /* holodule-iosTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		075D031D24E2915900CAAB8E /* Resources */ = {
+		5774EE91DA1B9A78DC759E53 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				075D032F24E2915A00CAAB8E /* LaunchScreen.storyboard in Resources */,
-				075D032C24E2915A00CAAB8E /* Assets.xcassets in Resources */,
-				075D032A24E2915900CAAB8E /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		075D033324E2915A00CAAB8E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				BA181A06215D4FA7C95F0C22 /* Assets.xcassets in Resources */,
+				9BC73DBA408F9B548AE6CFEF /* LaunchScreen.storyboard in Resources */,
+				362E369B4E0602257108DCFB /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4644CAEA76DC25EC6A70D6AD /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/APIKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Action.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/KRActivityIndicatorView.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/KRProgressHUD.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/APIKit.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Action.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/KRActivityIndicatorView.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/KRProgressHUD.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Kingfisher.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxCocoa.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxRelay.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		075D031B24E2915900CAAB8E /* Sources */ = {
+		1B29BE48575781831C739740 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				075D032724E2915900CAAB8E /* ViewController.swift in Sources */,
-				075D032324E2915900CAAB8E /* AppDelegate.swift in Sources */,
-				075D032524E2915900CAAB8E /* SceneDelegate.swift in Sources */,
+				8323C9A9EA82ED0954F48567 /* holodule_iosTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		075D033124E2915A00CAAB8E /* Sources */ = {
+		E2C902396883A69361A5E684 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				075D033A24E2915A00CAAB8E /* holodule_iosTests.swift in Sources */,
+				F7C101CB921E4DE583642FFB /* AppDelegate.swift in Sources */,
+				075D034D24E4338D00CAAB8E /* API.swift in Sources */,
+				8A8BB3969A454E36881897C0 /* SceneDelegate.swift in Sources */,
+				075D035124E433C700CAAB8E /* HomeViewModel.swift in Sources */,
+				075D034F24E4339C00CAAB8E /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		075D033724E2915A00CAAB8E /* PBXTargetDependency */ = {
+		0B9FAA01721D211837480D2B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 075D031E24E2915900CAAB8E /* holodule-ios */;
-			targetProxy = 075D033624E2915A00CAAB8E /* PBXContainerItemProxy */;
+			target = A7433C45DFD7F75327F0B32F /* holodule-ios */;
+			targetProxy = FC6DF5B842F699FE3572B3DA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		075D032824E2915900CAAB8E /* Main.storyboard */ = {
+		4CDAE2BC4DFC4BFDFC6F4348 /* Home.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				075D032924E2915900CAAB8E /* Base */,
+				F40206C60C28CF630A21ABF1 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Home.storyboard;
 			sourceTree = "<group>";
 		};
-		075D032D24E2915A00CAAB8E /* LaunchScreen.storyboard */ = {
+		5783BE2B0F8DCC2208A24593 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				075D032E24E2915A00CAAB8E /* Base */,
+				4C967B45BAAF41196434D0D1 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -244,7 +419,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		075D033C24E2915A00CAAB8E /* Debug */ = {
+		17C2D274C7EFBBE916F5A56E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -254,67 +429,6 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
-		075D033D24E2915A00CAAB8E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -348,127 +462,194 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		075D033F24E2915A00CAAB8E /* Debug */ = {
+		223FE3CEAE5F3D26FD6151B1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPIER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 7F6B255837;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				GCC_OPTIMIZATION_LEVEL = s;
 				INFOPLIST_FILE = "holodule-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "ymgn.holodule-ios";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		526782AE411DFDD9197DF478 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		075D034024E2915A00CAAB8E /* Release */ = {
+		65BA83F6A94C1D54BE76E12E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "holodule-iosTests/Info.plist";
+				INFORPLSIT_FILE = "holodule-iosTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/holodule-ios.app/holodule-ios";
+				TEST_HOSTS = "$(BUILT_PRODUCTS_DIR)/holodule-ios.app/holodule-ios";
+			};
+			name = Release;
+		};
+		CCB456C863B94E4D19F452A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPIER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 7F6B255837;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				GCC_OPTIMIZATION_LEVEL = O;
 				INFOPLIST_FILE = "holodule-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "ymgn.holodule-ios";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		075D034224E2915A00CAAB8E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7F6B255837;
-				INFOPLIST_FILE = "holodule-iosTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "ymgn.holodule-iosTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/holodule-ios.app/holodule-ios";
 			};
 			name = Debug;
 		};
-		075D034324E2915A00CAAB8E /* Release */ = {
+		F51B81E6ED26F87485729C39 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7F6B255837;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "holodule-iosTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				INFORPLSIT_FILE = "holodule-iosTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "ymgn.holodule-iosTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/holodule-ios.app/holodule-ios";
+				TEST_HOSTS = "$(BUILT_PRODUCTS_DIR)/holodule-ios.app/holodule-ios";
 			};
-			name = Release;
+			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		075D031A24E2915900CAAB8E /* Build configuration list for PBXProject "holodule-ios" */ = {
+		1D49FFEE92ED8ECDBD711C39 /* Build configuration list for PBXProject "holodule-ios" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				075D033C24E2915A00CAAB8E /* Debug */,
-				075D033D24E2915A00CAAB8E /* Release */,
+				526782AE411DFDD9197DF478 /* Debug */,
+				17C2D274C7EFBBE916F5A56E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
-		075D033E24E2915A00CAAB8E /* Build configuration list for PBXNativeTarget "holodule-ios" */ = {
+		6615E1AC74CFF4E661F39F60 /* Build configuration list for PBXNativeTarget "holodule-iosTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				075D033F24E2915A00CAAB8E /* Debug */,
-				075D034024E2915A00CAAB8E /* Release */,
+				F51B81E6ED26F87485729C39 /* Debug */,
+				65BA83F6A94C1D54BE76E12E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
-		075D034124E2915A00CAAB8E /* Build configuration list for PBXNativeTarget "holodule-iosTests" */ = {
+		9C62B1EF13C550BF57D98A07 /* Build configuration list for PBXNativeTarget "holodule-ios" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				075D034224E2915A00CAAB8E /* Debug */,
-				075D034324E2915A00CAAB8E /* Release */,
+				CCB456C863B94E4D19F452A3 /* Debug */,
+				223FE3CEAE5F3D26FD6151B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 075D031724E2915900CAAB8E /* Project object */;
+	rootObject = 7B0DAA1F36AD6E438502233B /* Project object */;
 }

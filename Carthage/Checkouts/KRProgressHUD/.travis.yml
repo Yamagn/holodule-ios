@@ -1,0 +1,11 @@
+language: objective-c
+osx_image: xcode11.0
+xcode_sdk: iphonesimulator13.0
+install:
+- gem install xcpretty
+- carthage bootstrap --platform iOS
+script:
+  - set -o pipefail
+  - travis_retry xcodebuild -project KRProgressHUD.xcodeproj -scheme KRProgressHUD -destination "platform=iOS Simulator,name=iPhone Xs" build-for-testing test | xcpretty
+notifications:
+  email: false

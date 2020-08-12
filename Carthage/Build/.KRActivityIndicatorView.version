@@ -1,0 +1,10 @@
+{
+  "commitish" : "3.0.5",
+  "iOS" : [
+    {
+      "name" : "KRActivityIndicatorView",
+      "hash" : "dd2cea21e71b8d6fc1f2e8ae2d8b33affe424245b2793b27d65fc2fa7ade0c6c",
+      "swiftToolchainVersion" : "5.2.2 (swiftlang-1103.0.32.6 clang-1103.0.32.51)"
+    }
+  ]
+}
