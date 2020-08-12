@@ -1,4 +1,0 @@
-framework module KingfisherSwiftUI {
-  header "KingfisherSwiftUI-Swift.h"
-  requires objc
-}
