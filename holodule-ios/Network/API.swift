@@ -9,6 +9,9 @@
 import Foundation
 import APIKit
 
+fileprivate let key = APIKEY
+fileprivate let ids: String = IDS.reduce("") { $0 + $1 + "," }
+
 final class DecodableDataParser: DataParser {
     var contentType: String? {
         return "application/json"
@@ -22,7 +25,7 @@ protocol YouTubeRequest: Request {}
 
 extension YouTubeRequest {
     public var baseURL: URL {
-        return URL(string: "https://www.googleapis.com/youtube/v3/")!
+        return URL(string: "https://www.googleapis.com/youtube/v3")!
     }
 }
 
@@ -31,7 +34,7 @@ public struct GetChannelList: YouTubeRequest {
         return DecodableDataParser()
     }
     
-    public typealias Response = ChannleList
+    public typealias Response = ChannelList
     public var method: HTTPMethod {
         return .get
     }
@@ -39,17 +42,13 @@ public struct GetChannelList: YouTubeRequest {
         return "channels"
     }
     public var parameters: Any? {
-        return ["forUsername": username, "key": key]
+        return ["part": "snippet", "id": ids, "key": key]
     }
     
-    let username: String
-    let key: String
-    
     public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
-        print(object)
         guard let data = object as? Data else {
             throw ResponseError.unexpectedObject(object)
         }
-        return try JSONDecoder().decode(ChannleList.self, from: data)
+        return try JSONDecoder().decode(ChannelList.self, from: data)
     }
 }
