@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import APIKit
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -24,6 +25,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        Session.rx_send(request: GetChannelList(username: "桐生ココ")).subscribe{ res in
+            print(res)
+        }
     }
 }

@@ -8,11 +8,13 @@
 
 import UIKit
 
-class ChennelCell: UITableViewCell {
-
+class ChennelsCell: UITableViewCell {
+    @IBOutlet weak var thumbnailCollectionView: UICollectionView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

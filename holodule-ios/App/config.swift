@@ -1,8 +1,8 @@
 //
-//  HomeViewModel.swift
+//  config.swift
 //  holodule-ios
 //
-//  Created by ymgn on 2020/08/12.
+//  Created by ymgn on 2020/08/13.
 //  Copyright © 2020 ymgn. All rights reserved.
 //
 
