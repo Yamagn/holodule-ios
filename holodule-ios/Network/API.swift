@@ -25,7 +25,7 @@ protocol YouTubeRequest: Request {}
 
 extension YouTubeRequest {
     public var baseURL: URL {
-        return URL(string: "https://www.googleapis.com/youtube/v3")!
+        return URL(string: host + "/api")!
     }
 }
 
@@ -34,21 +34,39 @@ public struct GetChannelList: YouTubeRequest {
         return DecodableDataParser()
     }
     
-    public typealias Response = ChannelList
+    public typealias Response = Channels
     public var method: HTTPMethod {
         return .get
     }
     public var path: String {
         return "channels"
     }
-    public var parameters: Any? {
-        return ["part": "snippet", "id": ids, "key": key]
+    
+    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
+        guard let data = object as? Data else {
+            throw ResponseError.unexpectedObject(object)
+        }
+        return try JSONDecoder().decode(Channels.self, from: data)
+    }
+}
+
+public struct GetVideos: YouTubeRequest {
+    public var dataParser: DataParser {
+        return DecodableDataParser()
+    }
+    
+    public typealias Response = Videos
+    public var method: HTTPMethod {
+        return .get
+    }
+    public var path: String {
+        return "videos"
     }
     
     public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
         guard let data = object as? Data else {
             throw ResponseError.unexpectedObject(object)
         }
-        return try JSONDecoder().decode(ChannelList.self, from: data)
+        return try JSONDecoder().decode(Videos.self, from: data)
     }
 }
