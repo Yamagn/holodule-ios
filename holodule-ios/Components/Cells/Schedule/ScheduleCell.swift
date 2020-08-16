@@ -9,7 +9,11 @@
 import UIKit
 
 class ScheduleCell: UITableViewCell {
-
+    @IBOutlet weak var videoThumbnail: UIImageView!
+    @IBOutlet weak var channelThumbnail: UIImageView!
+    @IBOutlet weak var channelName: UILabel!
+    @IBOutlet weak var scheduledAt: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
