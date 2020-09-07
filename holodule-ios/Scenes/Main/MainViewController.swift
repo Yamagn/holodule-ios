@@ -18,6 +18,7 @@ class MainViewController: UIViewController {
     var channels: [Channel]?
     var videos: [Video]?
     let dateFormatter = DateFormatter()
+    let isoFormatter = ISO8601DateFormatter()
     var prevDayVideos: [Video] = []
     var currentDayVideos: [Video] = []
     var followingDayVideos: [Video] = []
@@ -58,13 +59,13 @@ class MainViewController: UIViewController {
         }
     }
     func isoStringToDate(src: String) -> Date? {
-        dateFormatter.locale = Locale(identifier: "ja_JP")
-        dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"
-        return dateFormatter.date(from: src)
+        isoFormatter.timeZone = TimeZone.current
+        return isoFormatter.date(from: src)
     }
     func isoDateToString(src: Date) -> String {
         dateFormatter.timeStyle = .medium
         dateFormatter.dateStyle = .medium
+        dateFormatter.locale = Locale(identifier: "ja-JP")
         return dateFormatter.string(from: src)
     }
     func convertScheduledAt(video: Video) -> Date {
@@ -193,6 +194,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         if schedule.isStream {
             let scheduledAtDate = isoStringToDate(src: schedule.scheduledStartTime!)!
             let scheduledAtStr = isoDateToString(src: scheduledAtDate)
+            print(scheduledAtStr)
             let sepalatedTime = scheduledAtStr.components(separatedBy: " ")[1].components(separatedBy: ":")
             cell.scheduledAt.text = sepalatedTime[0] + ":" + sepalatedTime[1]
         } else {
