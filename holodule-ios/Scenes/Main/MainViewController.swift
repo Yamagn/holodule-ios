@@ -18,6 +18,9 @@ class MainViewController: UIViewController {
     var channels: [Channel]?
     var videos: [Video]?
     let dateFormatter = DateFormatter()
+    var prevDayVideos: [Video] = []
+    var currentDayVideos: [Video] = []
+    var followingDayVideos: [Video] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -47,7 +50,7 @@ class MainViewController: UIViewController {
                     KRProgressHUD.dismiss()
                     self.videos = self.sortVideo(videos: res.videos)
                     self.videos = self.filterVideos(src: self.videos ?? [])
-                    print(self.videos)
+                    self.distributeVideos(videos: self.videos ?? [])
                     self.tableView.reloadData()
                 case .failure(let err):
                     KRProgressHUD.showError(withMessage: err.localizedDescription)
@@ -79,7 +82,19 @@ class MainViewController: UIViewController {
     }
     func filterVideos(src: [Video]) -> [Video] {
         return src.filter {
-            calcDateRemainder(firstDate: convertScheduledAt(video: $0)) <= 1
+            abs(calcDateRemainder(firstDate: convertScheduledAt(video: $0))) <= 1
+        }
+    }
+    func distributeVideos(videos: [Video]) {
+        for video in videos {
+            let remain = calcDateRemainder(firstDate: convertScheduledAt(video: video))
+            if remain == -1 {
+                self.prevDayVideos.append(video)
+            } else if remain == 0 {
+                self.currentDayVideos.append(video)
+            } else if remain == 0 {
+                self.followingDayVideos.append(video)
+            }
         }
     }
     func resetTime(date: Date) -> Date {
@@ -104,54 +119,89 @@ class MainViewController: UIViewController {
             retInterval = firstDateReset.timeIntervalSince(nowDateReset)
         }
         let ret = retInterval/86400
-        let tmp = abs(Int(floor(ret)))
-        print(tmp)
-        return tmp
+        return Int(floor(ret))
     }
 }
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let schedulesCount = self.videos?.count else {
-            return 1
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 4
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let nowDate = Date()
+        self.dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "dMM", options: 0, locale: Locale(identifier: "ja-JP"))
+        switch section {
+        case 0:
+            return "チャンネル一覧"
+        case 1:
+            let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: nowDate)
+            return dateFormatter.string(from: yesterday!)
+        case 2:
+            return dateFormatter.string(from: nowDate)
+        case 3:
+            let tommorow = Calendar.current.date(byAdding: .day, value: 1, to: nowDate)
+            dateFormatter.string(from: tommorow!)
+        default:
+            return ""
         }
-        return schedulesCount + 1 
+        return ""
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return 1
+        } else if section == 1 {
+            return prevDayVideos.count
+        } else if section == 2 {
+            return currentDayVideos.count
+        } else if section == 3 {
+            return followingDayVideos.count
+        }
+        return 0
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        case 0:
+        var srcVideos: [Video] = []
+        if indexPath.section == 0 {
             let cell: ChannelsCell = tableView.dequeueReusableCell(withIdentifier: "ChannelsCell") as! ChannelsCell
             print(cell)
             return cell
-        default:
-            let schedule = self.videos?[indexPath.row - 1]
-            let cell: ScheduleCell = tableView.dequeueReusableCell(withIdentifier: "ScheduleCell") as! ScheduleCell
-            
-            let channelOptional = self.channels?.filter { $0.channelId == schedule?.channelId ?? "" }[0]
-            guard let channel = channelOptional else { return cell }
-            
-            let processer = DownsamplingImageProcessor(size: cell.channelThumbnail.bounds.size) |> RoundCornerImageProcessor(cornerRadius: 20)
-            let videoThumbnailUrl = URL(string: schedule?.thumbnailUrl ?? "")
-            let channelThumbnailUrl = URL(string: channel.thumbnailUrl)
-            
-            cell.videoThumbnail.kf.setImage(with: videoThumbnailUrl, placeholder: UIImage(named: "no_image.png"))
-            cell.channelName.text = schedule?.channelTitle
-            cell.channelThumbnail.kf.indicatorType = .activity
-            cell.channelThumbnail.kf.setImage(with: channelThumbnailUrl, placeholder: UIImage(named: "no_image.png"), options: [.processor(processer), .scaleFactor(UIScreen.main.scale), .transition(.fade(1)), .cacheOriginalImage])
-            
-            if schedule?.isStream ?? false {
-                let scheduledAtDate = isoStringToDate(src: (schedule?.scheduledStartTime!)!)!
-                let scheduledAtStr = isoDateToString(src: scheduledAtDate)
-                let sepalatedTime = scheduledAtStr.components(separatedBy: " ")[1].components(separatedBy: ":")
-                cell.scheduledAt.text = sepalatedTime[0] + ":" + sepalatedTime[1]
-            } else {
-                let publishedAtDate = isoStringToDate(src: (schedule?.publishedAt)!)!
-                let publishedAtStr = isoDateToString(src: publishedAtDate)
-                let sepalatedTime = publishedAtStr.components(separatedBy: " ")[1].components(separatedBy: ":")
-                cell.scheduledAt.text = sepalatedTime[0] + ":" + sepalatedTime[1]
-            }
-            return cell
         }
+        let cell: ScheduleCell = tableView.dequeueReusableCell(withIdentifier: "ScheduleCell") as! ScheduleCell
+        if indexPath.section == 1 {
+            srcVideos = prevDayVideos
+        } else if indexPath.section == 2 {
+            srcVideos = currentDayVideos
+        } else if indexPath.section == 3 {
+            srcVideos = currentDayVideos
+        }
+        return setupScheduleCell(cell: cell, videos: srcVideos, indexPath: indexPath)
+    }
+    func setupScheduleCell(cell: ScheduleCell, videos: [Video], indexPath: IndexPath) -> ScheduleCell {
+        let schedule = videos[indexPath.row]
+        
+        let channelOptional = self.channels?.filter { $0.channelId == schedule.channelId }[0]
+        guard let channel = channelOptional else { return cell }
+        
+        let processer = DownsamplingImageProcessor(size: cell.channelThumbnail.bounds.size) |> RoundCornerImageProcessor(cornerRadius: 20)
+        let videoThumbnailUrl = URL(string: schedule.thumbnailUrl)
+        let channelThumbnailUrl = URL(string: channel.thumbnailUrl)
+        
+        cell.videoThumbnail.kf.setImage(with: videoThumbnailUrl, placeholder: UIImage(named: "no_image.png"))
+        cell.channelName.text = schedule.channelTitle
+        cell.channelThumbnail.kf.indicatorType = .activity
+        cell.channelThumbnail.kf.setImage(with: channelThumbnailUrl, placeholder: UIImage(named: "no_image.png"), options: [.processor(processer), .scaleFactor(UIScreen.main.scale), .transition(.fade(1)), .cacheOriginalImage])
+        
+        if schedule.isStream {
+            let scheduledAtDate = isoStringToDate(src: schedule.scheduledStartTime!)!
+            let scheduledAtStr = isoDateToString(src: scheduledAtDate)
+            let sepalatedTime = scheduledAtStr.components(separatedBy: " ")[1].components(separatedBy: ":")
+            cell.scheduledAt.text = sepalatedTime[0] + ":" + sepalatedTime[1]
+        } else {
+            let publishedAtDate = isoStringToDate(src: schedule.publishedAt)!
+            let publishedAtStr = isoDateToString(src: publishedAtDate)
+            let sepalatedTime = publishedAtStr.components(separatedBy: " ")[1].components(separatedBy: ":")
+            cell.scheduledAt.text = sepalatedTime[0] + ":" + sepalatedTime[1]
+        }
+        return cell
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let cell = cell as? ChannelsCell else { return }
