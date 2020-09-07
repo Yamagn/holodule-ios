@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import APIKit
 import Kingfisher
+import KRProgressHUD
 
 class MainViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -30,24 +31,26 @@ class MainViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        KRProgressHUD.show()
         Session.send(GetChannelList()) { result in
             switch result {
                 case.success(let res):
                     self.channels = res.channels
                     self.tableView.reloadData()
                 case .failure(let err):
-                    print(err)
+                    KRProgressHUD.showError(withMessage: err.localizedDescription)
             }
         }
-        IDS.forEach { id in
-            Session.send(GetVideos()) { result in
-                switch result {
-                    case .success(let res):
-                        self.videos = self.sortVideo(videos: res.videos)
-                        self.tableView.reloadData()
-                    case .failure(let err):
-                        print(err)
-                }
+        Session.send(GetVideos()) { result in
+            switch result {
+                case .success(let res):
+                    KRProgressHUD.dismiss()
+                    self.videos = self.sortVideo(videos: res.videos)
+                    self.videos = self.filterVideos(src: self.videos ?? [])
+                    print(self.videos)
+                    self.tableView.reloadData()
+                case .failure(let err):
+                    KRProgressHUD.showError(withMessage: err.localizedDescription)
             }
         }
     }
@@ -73,6 +76,37 @@ class MainViewController: UIViewController {
             convertScheduledAt(video: prevVideo) < convertScheduledAt(video: nextVideo)
         }
         return srcVideos
+    }
+    func filterVideos(src: [Video]) -> [Video] {
+        return src.filter {
+            calcDateRemainder(firstDate: convertScheduledAt(video: $0)) <= 1
+        }
+    }
+    func resetTime(date: Date) -> Date {
+        let calender = Calendar(identifier: .gregorian)
+        var components = calender.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+        components.hour = 0
+        components.minute = 0
+        components.second = 0
+        
+        return calender.date(from: components)!
+    }
+    func calcDateRemainder(firstDate: Date, secondDate: Date? = nil) -> Int {
+        var retInterval: Double!
+        let firstDateReset = resetTime(date: firstDate)
+        
+        if let second = secondDate {
+            let secondDateReset = resetTime(date: second)
+            retInterval = firstDateReset.timeIntervalSince(secondDateReset)
+        } else {
+            let nowDate = Date()
+            let nowDateReset = resetTime(date: nowDate)
+            retInterval = firstDateReset.timeIntervalSince(nowDateReset)
+        }
+        let ret = retInterval/86400
+        let tmp = abs(Int(floor(ret)))
+        print(tmp)
+        return tmp
     }
 }
 
