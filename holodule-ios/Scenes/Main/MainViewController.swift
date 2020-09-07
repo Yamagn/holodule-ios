@@ -53,6 +53,7 @@ class MainViewController: UIViewController {
                     self.videos = self.filterVideos(src: self.videos ?? [])
                     self.distributeVideos(videos: self.videos ?? [])
                     self.tableView.reloadData()
+                    self.moveToCurrent(videos: self.currentDayVideos)
                 case .failure(let err):
                     KRProgressHUD.showError(withMessage: err.localizedDescription)
             }
@@ -121,6 +122,22 @@ class MainViewController: UIViewController {
         }
         let ret = retInterval/86400
         return Int(floor(ret))
+    }
+    func moveToCurrent(videos: [Video]) {
+        for (index, video) in videos.enumerated() {
+            switch video.liveBroadcastContent {
+            case .live:
+                let indexPath = IndexPath(row: index, section: 2)
+                self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+                return
+            case .upcoming:
+                let indexPath = IndexPath(row: index, section: 2)
+                self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+                return
+            default:
+                break
+            }
+        }
     }
 }
 
@@ -194,9 +211,12 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         if schedule.isStream {
             let scheduledAtDate = isoStringToDate(src: schedule.scheduledStartTime!)!
             let scheduledAtStr = isoDateToString(src: scheduledAtDate)
-            print(scheduledAtStr)
             let sepalatedTime = scheduledAtStr.components(separatedBy: " ")[1].components(separatedBy: ":")
             cell.scheduledAt.text = sepalatedTime[0] + ":" + sepalatedTime[1]
+            if schedule.liveBroadcastContent.rawValue == "live" {
+                cell.backgroundView?.layer.borderColor = UIColor.red.cgColor
+                cell.backgroundView?.layer.borderWidth = 10
+            }
         } else {
             let publishedAtDate = isoStringToDate(src: schedule.publishedAt)!
             let publishedAtStr = isoDateToString(src: publishedAtDate)
