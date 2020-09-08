@@ -22,6 +22,8 @@ class MainViewController: UIViewController {
     var prevDayVideos: [Video] = []
     var currentDayVideos: [Video] = []
     var followingDayVideos: [Video] = []
+    var hasChannelSelected: Bool = false
+    var selectedChannelRow: Int = 0
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -275,5 +277,39 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let width: CGFloat = 44
         let height = width
         return CGSize(width: width, height: height)
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let channels = self.channels else { return }
+        guard let videos = self.videos else { return }
+        if self.hasChannelSelected {
+            if self.selectedChannelRow != indexPath.row {
+                let selectedChannel = channels[indexPath.row]
+                self.selectedChannelRow = indexPath.row
+                channelFilter(channel: selectedChannel)
+            } else {
+                self.hasChannelSelected = false
+                self.initDistributedVideos()
+                self.distributeVideos(videos: videos)
+            }
+        } else {
+            self.hasChannelSelected = true
+            self.selectedChannelRow = indexPath.row
+            let selectedChannel = channels[indexPath.row]
+            channelFilter(channel: selectedChannel)
+        }
+        
+        self.tableView.reloadData()
+    }
+    func channelFilter(channel: Channel) {
+        guard let videos = self.videos else { return }
+        self.distributeVideos(videos: videos)
+        prevDayVideos = prevDayVideos.filter { $0.channelId == channel.channelId }
+        currentDayVideos = currentDayVideos.filter { $0 .channelId == channel.channelId }
+        followingDayVideos = followingDayVideos.filter { $0.channelId == channel.channelId }
+    }
+    func initDistributedVideos() {
+        self.prevDayVideos = []
+        self.currentDayVideos = []
+        self.followingDayVideos = []
     }
 }
