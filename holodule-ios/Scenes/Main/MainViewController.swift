@@ -227,6 +227,23 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = cell as? ChannelsCell else { return }
         cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        var selectedVideo: Video?
+        switch indexPath.section {
+        case 1:
+            selectedVideo = prevDayVideos[indexPath.row]
+        case 2:
+            selectedVideo = currentDayVideos[indexPath.row]
+        case 3:
+            selectedVideo = followingDayVideos[indexPath.row]
+        default:
+            selectedVideo = nil
+        }
+        guard let video = selectedVideo else { return }
+        guard let url = URL(string: "https://www.youtube.com/watch?v=\(video.videoId)") else { return }
+        UIApplication.shared.open(url)
+    }
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
