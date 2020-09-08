@@ -214,8 +214,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             let sepalatedTime = scheduledAtStr.components(separatedBy: " ")[1].components(separatedBy: ":")
             cell.scheduledAt.text = sepalatedTime[0] + ":" + sepalatedTime[1]
             if schedule.liveBroadcastContent.rawValue == "live" {
-                cell.backgroundView?.layer.borderColor = UIColor.red.cgColor
-                cell.backgroundView?.layer.borderWidth = 10
             }
         } else {
             let publishedAtDate = isoStringToDate(src: schedule.publishedAt)!
