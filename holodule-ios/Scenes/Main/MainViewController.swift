@@ -182,7 +182,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         var srcVideos: [Video] = []
         if indexPath.section == 0 {
             let cell: ChannelsCell = tableView.dequeueReusableCell(withIdentifier: "ChannelsCell") as! ChannelsCell
-            print(cell)
             return cell
         }
         let cell: ScheduleCell = tableView.dequeueReusableCell(withIdentifier: "ScheduleCell") as! ScheduleCell
@@ -302,6 +301,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     func channelFilter(channel: Channel) {
         guard let videos = self.videos else { return }
+        self.initDistributedVideos()
         self.distributeVideos(videos: videos)
         prevDayVideos = prevDayVideos.filter { $0.channelId == channel.channelId }
         currentDayVideos = currentDayVideos.filter { $0 .channelId == channel.channelId }
