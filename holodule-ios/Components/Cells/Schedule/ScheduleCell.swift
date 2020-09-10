@@ -15,7 +15,13 @@ class ScheduleCell: UITableViewCell {
             channelThumbnail.layer.cornerRadius = channelThumbnail.frame.width / 2.0
         }
     }
-    @IBOutlet weak var channelName: UILabel!
+    @IBOutlet weak var channelName: UILabel! {
+        didSet {
+            channelName.adjustsFontSizeToFitWidth = true
+            channelName.minimumScaleFactor = 0.2
+            channelName.numberOfLines = 1
+        }
+    }
     @IBOutlet weak var scheduledAt: UILabel!
     
     override func awakeFromNib() {

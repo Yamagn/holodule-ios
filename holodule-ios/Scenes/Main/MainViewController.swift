@@ -115,11 +115,12 @@ class MainViewController: UIViewController {
     func distributeVideos(videos: [Video]) {
         for video in videos {
             let remain = calcDateRemainder(firstDate: convertScheduledAt(video: video))
+            print(remain)
             if remain == -1 {
                 self.prevDayVideos.append(video)
             } else if remain == 0 {
                 self.currentDayVideos.append(video)
-            } else if remain == 0 {
+            } else if remain == 1 {
                 self.followingDayVideos.append(video)
             }
         }
@@ -183,7 +184,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             return dateFormatter.string(from: nowDate)
         case 3:
             let tommorow = Calendar.current.date(byAdding: .day, value: 1, to: nowDate)
-            dateFormatter.string(from: tommorow!)
+            return dateFormatter.string(from: tommorow!)
         default:
             return ""
         }

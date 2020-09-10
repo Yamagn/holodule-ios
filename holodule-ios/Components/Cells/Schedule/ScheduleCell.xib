@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -26,6 +26,9 @@
                                     <constraint firstAttribute="height" constant="180" id="Jvv-gr-D7k"/>
                                     <constraint firstAttribute="width" secondItem="XaR-F9-qEc" secondAttribute="height" multiplier="16:9" id="sfC-Ir-DOJ"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Kj-v8-fnz">
                                 <rect key="frame" x="0.0" y="180" width="320" height="50"/>
@@ -40,6 +43,9 @@
                                                     <constraint firstAttribute="width" secondItem="ogW-MQ-kz1" secondAttribute="height" multiplier="1:1" id="Yh0-cl-beL"/>
                                                     <constraint firstAttribute="height" constant="30" id="pu8-Yz-5b5"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -52,21 +58,26 @@
                                             <constraint firstItem="ogW-MQ-kz1" firstAttribute="leading" secondItem="OK9-P2-gTP" secondAttribute="leading" constant="10" id="svq-Yi-cn1"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8x-wT-SAX">
-                                        <rect key="frame" x="50" y="0.0" width="200" height="50"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8x-wT-SAX">
+                                        <rect key="frame" x="50" y="0.0" width="209" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="gRG-OG-xOx"/>
-                                            <constraint firstAttribute="width" constant="200" id="st4-cN-xEy"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:12" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5f-N6-Jhf">
-                                        <rect key="frame" x="250" y="0.0" width="55" height="50"/>
+                                        <rect key="frame" x="259" y="0.0" width="46" height="50"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GvQ-yo-Psv">
                                         <rect key="frame" x="305" y="0.0" width="15" height="50"/>
@@ -76,6 +87,10 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="f5f-N6-Jhf" firstAttribute="leading" secondItem="e8x-wT-SAX" secondAttribute="trailing" id="R8e-X2-aL3"/>
+                                    <constraint firstItem="GvQ-yo-Psv" firstAttribute="leading" secondItem="f5f-N6-Jhf" secondAttribute="trailing" id="Y28-AS-sjj"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                     </stackView>
