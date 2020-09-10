@@ -25,6 +25,8 @@ class MainViewController: UIViewController {
     var hasChannelSelected: Bool = false
     var selectedChannelRow: Int = 0
     
+    fileprivate let refreshCtrl = UIRefreshControl()
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let channelsNib = UINib(nibName: "ChannelsCell", bundle: nil)
@@ -34,9 +36,19 @@ class MainViewController: UIViewController {
         tableView.indexPathsForSelectedRows?.forEach { [weak self] in
             self?.tableView.deselectRow(at: $0, animated: true)
         }
+        tableView.refreshControl = refreshCtrl
+        refreshCtrl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
+    }
+    @objc
+    func refresh(sender: UIRefreshControl) {
+        reloadVideos()
+        sender.endRefreshing()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        reloadVideos()
+    }
+    func reloadVideos() {
         KRProgressHUD.show()
         Session.send(GetChannelList()) { result in
             switch result {
