@@ -42,6 +42,7 @@ class MainViewController: UIViewController {
             switch result {
                 case.success(let res):
                     self.channels = res.channels
+                    self.channels = self.sortChannels(channels: self.channels ?? [])
                     self.tableView.reloadData()
                 case .failure(let err):
                     KRProgressHUD.showError(withMessage: err.localizedDescription)
@@ -76,6 +77,16 @@ class MainViewController: UIViewController {
             return isoStringToDate(src: video.scheduledStartTime!)!
         }
         return isoStringToDate(src: video.publishedAt)!
+    }
+    func convertCreatedAtFromChannel(channel: Channel) -> Date {
+        return isoStringToDate(src: channel.publishedAt)!
+    }
+    func sortChannels(channels: [Channel]) -> [Channel] {
+        var srcChannels = channels
+        srcChannels.sort { prevChannel, nextChannel in
+            convertCreatedAtFromChannel(channel: prevChannel) < convertCreatedAtFromChannel(channel: nextChannel)
+        }
+        return srcChannels
     }
     func sortVideo(videos: [Video]) -> [Video] {
         var srcVideos = videos
@@ -245,6 +256,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         guard let url = URL(string: "https://www.youtube.com/watch?v=\(video.videoId)") else { return }
         UIApplication.shared.open(url)
     }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return indexPath.section == 0 ? 120 : 300
+    }
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -260,6 +274,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let channels = self.channels else { return cell }
         let url = URL(string: channels[indexPath.row].thumbnailUrl)
         let processer = DownsamplingImageProcessor(size: cell.thumbnailView.bounds.size) |> RoundCornerImageProcessor(cornerRadius: 20)
+        cell.channelTitleLabel.text = channels[indexPath.row].channelTitle
         cell.thumbnailView.kf.indicatorType = .activity
         cell.thumbnailView.kf.setImage(with: url, placeholder: UIImage(named: "no_image.png"), options: [.processor(processer), .scaleFactor(UIScreen.main.scale), .transition(.fade(1)), .cacheOriginalImage]){
             result in
@@ -273,9 +288,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width: CGFloat = 44
-        let height = width
-        return CGSize(width: width, height: height)
+        return CGSize(width: 90, height: 120)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let channels = self.channels else { return }
