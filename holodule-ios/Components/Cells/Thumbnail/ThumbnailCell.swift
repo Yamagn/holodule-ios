@@ -10,7 +10,11 @@ import UIKit
 
 class ThumbnailCell: UICollectionViewCell {
 
-    @IBOutlet weak var thumbnailView: UIImageView!
+    @IBOutlet weak var thumbnailView: UIImageView! {
+        didSet {
+            thumbnailView.layer.cornerRadius = 20
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
