@@ -12,6 +12,7 @@ import RxCocoa
 import APIKit
 import Kingfisher
 import KRProgressHUD
+import SkeletonView
 
 class MainViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -113,6 +114,7 @@ class MainViewController: UIViewController {
         }
     }
     func distributeVideos(videos: [Video]) {
+        initDistributedVideos()
         for video in videos {
             let remain = calcDateRemainder(firstDate: convertScheduledAt(video: video))
             print(remain)
@@ -124,6 +126,11 @@ class MainViewController: UIViewController {
                 self.followingDayVideos.append(video)
             }
         }
+    }
+    func initDistributedVideos() {
+        self.prevDayVideos = []
+        self.currentDayVideos = []
+        self.followingDayVideos = []
     }
     func resetTime(date: Date) -> Date {
         let calender = Calendar(identifier: .gregorian)
@@ -188,7 +195,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             return ""
         }
-        return ""
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
@@ -313,7 +319,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 channelFilter(channel: selectedChannel)
             } else {
                 self.hasChannelSelected = false
-                self.initDistributedVideos()
                 self.distributeVideos(videos: videos)
             }
         } else {
@@ -327,15 +332,9 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     func channelFilter(channel: Channel) {
         guard let videos = self.videos else { return }
-        self.initDistributedVideos()
         self.distributeVideos(videos: videos)
         prevDayVideos = prevDayVideos.filter { $0.channelId == channel.channelId }
         currentDayVideos = currentDayVideos.filter { $0 .channelId == channel.channelId }
         followingDayVideos = followingDayVideos.filter { $0.channelId == channel.channelId }
-    }
-    func initDistributedVideos() {
-        self.prevDayVideos = []
-        self.currentDayVideos = []
-        self.followingDayVideos = []
     }
 }
