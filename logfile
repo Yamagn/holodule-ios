@@ -1,0 +1,12 @@
+2020-09-09 10:14:11.618 JST [17967] LOG:  starting PostgreSQL 12.4 on x86_64-apple-darwin19.5.0, compiled by Apple clang version 11.0.3 (clang-1103.0.32.62), 64-bit
+2020-09-09 10:14:11.619 JST [17967] LOG:  listening on IPv6 address "::1", port 5432
+2020-09-09 10:14:11.619 JST [17967] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2020-09-09 10:14:11.620 JST [17967] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2020-09-09 10:14:11.630 JST [17969] LOG:  database system was shut down at 2020-09-09 10:13:49 JST
+2020-09-09 10:14:11.633 JST [17967] LOG:  database system is ready to accept connections
+2020-09-09 11:38:47.127 JST [20909] FATAL:  role "postgres" does not exist
+2020-09-09 11:39:16.950 JST [20949] FATAL:  database "ymgn" does not exist
+2020-09-10 16:16:01.540 JST [17967] LOG:  received smart shutdown request
+2020-09-10 16:16:01.542 JST [17967] LOG:  background worker "logical replication launcher" (PID 17975) exited with exit code 1
+2020-09-10 16:16:01.542 JST [17970] LOG:  shutting down
+2020-09-10 16:16:01.551 JST [17967] LOG:  database system is shut down

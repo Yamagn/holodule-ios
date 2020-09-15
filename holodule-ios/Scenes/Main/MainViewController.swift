@@ -50,6 +50,7 @@ class MainViewController: UIViewController {
         reloadVideos()
     }
     func reloadVideos() {
+        setEmptyView()
         KRProgressHUD.show()
         Session.send(GetChannelList()) { result in
             switch result {
@@ -65,6 +66,7 @@ class MainViewController: UIViewController {
             switch result {
                 case .success(let res):
                     KRProgressHUD.dismiss()
+                    self.dismissEmptyView()
                     self.videos = self.sortVideo(videos: res.videos)
                     self.videos = self.filterVideos(src: self.videos ?? [])
                     self.distributeVideos(videos: self.videos ?? [])
@@ -171,6 +173,16 @@ class MainViewController: UIViewController {
                 break
             }
         }
+    }
+    func setEmptyView() {
+        let empty = UIView(frame: view.frame)
+        empty.backgroundColor = .secondarySystemBackground
+        empty.tag = 2
+        view.addSubview(empty)
+    }
+    func dismissEmptyView() {
+        let empty = view.viewWithTag(2)
+        empty?.removeFromSuperview()
     }
 }
 
