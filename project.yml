@@ -35,10 +35,8 @@ targets:
       - carthage: KRProgressHUD
       - carthage: KRActivityIndicatorView
       - carthage: APIKit
-      - carthage: RxSwift
       - carthage: Kingfisher
-      - carthage: RxCocoa
-      - carthage: RxRelay
+      - carthage: SkeletonView
   holodule-iosTests:
     type: bundle.unit-test
     platform: iOS

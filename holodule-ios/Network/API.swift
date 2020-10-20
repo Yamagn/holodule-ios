@@ -63,6 +63,12 @@ public struct GetVideos: YouTubeRequest {
         return "videos"
     }
     
+    public var parameters: Any? {
+        return ["from": fromDate]
+    }
+    
+    var fromDate: String
+    
     public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
         guard let data = object as? Data else {
             throw ResponseError.unexpectedObject(object)

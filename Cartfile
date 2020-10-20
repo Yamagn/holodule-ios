@@ -1,4 +1,4 @@
 github "Krimpedance/KRProgressHUD"
 github "ishkawa/APIKit"
-github "ReactiveX/RxSwift"
 github "onevcat/Kingfisher"
+github "Juanpe/SkeletonView"

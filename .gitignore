@@ -1,2 +1,4 @@
 Carthage/
 *.xcodeproj/
+config.swift
+holodule-ios/App/config.swift

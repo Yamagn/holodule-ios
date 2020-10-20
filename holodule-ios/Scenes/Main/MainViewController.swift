@@ -7,12 +7,10 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
 import APIKit
 import Kingfisher
 import KRProgressHUD
-import SkeletonView
+import Foundation
 
 class MainViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -25,6 +23,9 @@ class MainViewController: UIViewController {
     var followingDayVideos: [Video] = []
     var hasChannelSelected: Bool = false
     var selectedChannelRow: Int = 0
+    var fromDatetimeIsoString: String {
+        return isoFormatter.string(from: Calendar.current.date(byAdding: .day, value: -1, to: Date())!)
+    }
     
     fileprivate let refreshCtrl = UIRefreshControl()
     
@@ -62,7 +63,7 @@ class MainViewController: UIViewController {
                     KRProgressHUD.showError(withMessage: err.localizedDescription)
             }
         }
-        Session.send(GetVideos()) { result in
+        Session.send(GetVideos(fromDate: fromDatetimeIsoString)) { result in
             switch result {
                 case .success(let res):
                     KRProgressHUD.dismiss()
@@ -119,7 +120,6 @@ class MainViewController: UIViewController {
         initDistributedVideos()
         for video in videos {
             let remain = calcDateRemainder(firstDate: convertScheduledAt(video: video))
-            print(remain)
             if remain == -1 {
                 self.prevDayVideos.append(video)
             } else if remain == 0 {
@@ -232,7 +232,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.section == 2 {
             srcVideos = currentDayVideos
         } else if indexPath.section == 3 {
-            srcVideos = currentDayVideos
+            srcVideos = followingDayVideos
         }
         return setupScheduleCell(cell: cell, videos: srcVideos, indexPath: indexPath)
     }
@@ -307,7 +307,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let processer = DownsamplingImageProcessor(size: cell.thumbnailView.bounds.size) |> RoundCornerImageProcessor(cornerRadius: 20)
         cell.channelTitleLabel.text = channels[indexPath.row].channelTitle
         cell.thumbnailView.kf.indicatorType = .activity
-        cell.thumbnailView.kf.setImage(with: url, placeholder: UIImage(named: "no_image.png"), options: [.processor(processer), .scaleFactor(UIScreen.main.scale), .transition(.fade(1)), .cacheOriginalImage]){
+        cell.thumbnailView.kf.setImage(with: url, placeholder: UIImage(named: "no_image.png"), options: [.processor(processer), .scaleFactor(UIScreen.main.scale), .transition(.fade(1)), .cacheOriginalImage], completionHandler: {
             result in
             switch result {
             case .success(let value):
@@ -315,7 +315,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             case .failure(let error):
                 print("Job failed: \(error.localizedDescription)")
             }
-        }
+        })
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
