@@ -197,11 +197,20 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             return "チャンネル一覧"
         case 1:
+            if self.prevDayVideos.count == 0 {
+                return nil
+            }
             let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: nowDate)
             return dateFormatter.string(from: yesterday!)
         case 2:
+            if self.currentDayVideos.count == 0 {
+                return nil
+            }
             return dateFormatter.string(from: nowDate)
         case 3:
+            if self.followingDayVideos.count == 0 {
+                return nil
+            }
             let tommorow = Calendar.current.date(byAdding: .day, value: 1, to: nowDate)
             return dateFormatter.string(from: tommorow!)
         default:
