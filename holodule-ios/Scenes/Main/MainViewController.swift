@@ -23,6 +23,7 @@ class MainViewController: UIViewController {
     var followingDayVideos: [Video] = []
     var hasChannelSelected: Bool = false
     var selectedChannelRow: Int = 0
+    var hasReloaded: Bool = false
     var fromDatetimeIsoString: String {
         return isoFormatter.string(from: Calendar.current.date(byAdding: .day, value: -1, to: Date())!)
     }
@@ -50,8 +51,11 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         reloadVideos()
     }
+    @objc
     func reloadVideos() {
-        setEmptyView()
+        if !self.hasReloaded {
+            setEmptyView()
+        }
         KRProgressHUD.show()
         Session.send(GetChannelList()) { result in
             switch result {
@@ -61,6 +65,9 @@ class MainViewController: UIViewController {
                     self.tableView.reloadData()
                 case .failure(let err):
                     KRProgressHUD.showError(withMessage: err.localizedDescription)
+                    if !self.hasReloaded {
+                        self.addReloadComponent()
+                    }
             }
         }
         Session.send(GetVideos(fromDate: fromDatetimeIsoString)) { result in
@@ -75,6 +82,9 @@ class MainViewController: UIViewController {
                     self.moveToCurrent(videos: self.currentDayVideos)
                 case .failure(let err):
                     KRProgressHUD.showError(withMessage: err.localizedDescription)
+                    if !self.hasReloaded {
+                        self.addReloadComponent()
+                    }
             }
         }
     }
@@ -183,6 +193,22 @@ class MainViewController: UIViewController {
     func dismissEmptyView() {
         let empty = view.viewWithTag(2)
         empty?.removeFromSuperview()
+    }
+    func addReloadComponent() {
+        hasReloaded = true
+        guard let emptyView = view.viewWithTag(2) else {
+            return
+        }
+        let reloadIconView = UIImageView(image: UIImage(named: "reloadIcon"))
+        reloadIconView.frame = CGRect(x: 50, y: 50, width: 50, height: 50)
+        reloadIconView.center = emptyView.center
+        let buttonView = UIButton(type: .system)
+        buttonView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
+        buttonView.setTitle("タップして再試行", for: .normal)
+        buttonView.addTarget(self, action: #selector(reloadVideos), for: .touchUpInside)
+        buttonView.center = CGPoint(x: reloadIconView.center.x, y: reloadIconView.center.y + 50)
+        emptyView.addSubview(reloadIconView)
+        emptyView.addSubview(buttonView)
     }
 }
 
